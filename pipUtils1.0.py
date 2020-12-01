@@ -25,6 +25,8 @@
 #       直接找某一行是否以import或者from开头 直接读取第二个字符串（注意要去掉.之后的，参考该脚本的方法）
 #      （1）import ** as *** ：找import的后面的（“ ”分割）
 #      （2）from *** import ***
+# (3) 还可以把存在的包排除掉，不pip，还可以确定安装的版本
+
 #############################################################################
 
 import os                                              # 执行pip指令
@@ -34,7 +36,7 @@ def getpackage(path,lines):
     index = 1
     PackageName = []
     try:
-        f = open(path, 'r')
+        f = open(path, 'r',encoding='UTF-8')
         while(1):
             if index>=lines[0]:
                 if index<=lines[1]:
@@ -89,6 +91,8 @@ PackageName = ['opencv-python' if i =='cv2' else i for i in PackageName]
 
 PackageName = list(set(PackageName))   # 去除重复的包名
 print("所需安装的包：" ,PackageName)
+print("总共需要安装  " ,len(PackageName),"  个包")
+
 #############################################################################
 # 阿里云 http://mirrors.aliyun.com/pypi/simple/
 # 中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/

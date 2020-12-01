@@ -14,6 +14,9 @@
 # 3、特别注意包名是否存在替换 -- 按76行模板直接添加即可  （105行）
 # 4. 把该文件放在工程的根目录
 
+# 改进：
+# (1) 还可以把存在的包排除掉，不pip，还可以确定安装的版本
+
 #############################################################################
 
 import os
@@ -22,7 +25,7 @@ def getpackage(path):
     # 以只读模式打开文件，如果打开失败有error输出
     # PackageName = []
     try:
-        f = open(path,mode='r',encoding='UTF-8')
+        f = open(path,mode= 'r',encoding='UTF-8')
         str = f.readline()
         while(str):
            # print("当前第 行：",str)
@@ -109,6 +112,8 @@ PackageName = ['opencv-python' if i =='cv2' else i for i in PackageName]
 
 PackageName = list(set(PackageName))   # 去除重复的包名
 print("所需安装的包：" ,PackageName)
+print("总共需要安装  " ,len(PackageName),"  个包")
+
 #############################################################################
 # 阿里云 http://mirrors.aliyun.com/pypi/simple/
 # 中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/

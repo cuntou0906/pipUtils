@@ -5,7 +5,7 @@
 @file: 33.py
 @time: 2020/11/27
 """
-import  333dttfdsfjlsd.fdjsofjdo的fjsdfjd
-from 3333fosjdfa  fosadfhasdd
-tt  t
-fff 个梵蒂
+import dttfdsfjlsd.fdjsofjdo的fjsdfjd  a
+from fosjdfa import fosadfhasdd
+tt 44t
+fff4 个梵蒂

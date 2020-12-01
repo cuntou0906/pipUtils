@@ -24,6 +24,7 @@
 #       直接找某一行是否以import或者from开头 直接读取第二个字符串（注意要去掉.之后的，参考该脚本的方法）
 #      （1）import ** as *** ：找import的后面的（“ ”分割）
 #      （2）from *** import ***
+# (3) 还可以把存在的包排除掉，不pip，还可以确定安装的版本
 #############################################################################
 
 import os                                              # 执行pip指令
@@ -32,7 +33,7 @@ def getpackage(path):
     # 以只读模式打开文件，如果打开失败有error输出
     PackageName = []
     try:
-        f = open(path, 'r')
+        f = open(path, 'r',encoding='UTF-8')
         str = f.readline()
         while(str):
            # print("当前第",index,"行：",str)
@@ -65,7 +66,10 @@ def getpackage(path):
 # 首先是文件名path： 安装path.py 文件里的 import的包
 
 #############################################################################
-path = 'Pack.py'                                       # 路径名称
+path = './hahah/1.py'                      # 路径名称
+
+# path = './tth/sdhfld/sdfdsjf/33.py'                      # 路径名称
+# path = 'Pagelist.py'                                       # 路径名称
 
 PackageName = getpackage(path)
 # print(PackageName)
@@ -83,6 +87,8 @@ PackageName = ['opencv-python' if i =='cv2' else i for i in PackageName]
 
 PackageName = list(set(PackageName))   # 去除重复的包名
 print("所需安装的包：" ,PackageName)
+print("总共需要安装  " ,len(PackageName),"  个包")
+
 #############################################################################
 # 阿里云 http://mirrors.aliyun.com/pypi/simple/
 # 中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/
